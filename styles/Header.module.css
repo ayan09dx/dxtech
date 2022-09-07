@@ -87,6 +87,8 @@
     transition: all 0.3s ease-in-out;
     background-color: white;
   }
+
+  .header_container_fixed .bar{background-color: black;}
   
   .aboutus a:hover{
     color: white;
@@ -101,6 +103,7 @@
   .navitem {
     margin-left: 30px;
     font-size: 16px;
+    cursor: pointer;
   }
   
   .navlink{
@@ -147,13 +150,15 @@
         left: -100%;
         top: 6.3rem;
         flex-direction: column;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.9);
         width: 100%;
         text-align: center;
         padding: 0px;
         transition: 0.3s;
         box-shadow:0 10px 27px rgba(0, 0, 0, 0.05);
     }
+
+    .header_container_fixed .navmenu {top:4rem}
   
     .navmenu.active {
         left: 0;

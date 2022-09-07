@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 
 export default function CompanyDesc() {
   return (
-    <div className={styles.companydescwrapper}>
+    <div className={styles.companydescwrapper} id="about">
         <div className={styles.companyimg}>
             <div className={styles.companystat}>
              <img src="/exp.png" alt="exp-img" className={styles.expimg}/>

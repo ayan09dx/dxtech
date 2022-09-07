@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 import { bannercards } from './Data'
 export default function BannerCards() {
   return (
-    <div className={styles.bannercardwrapper}>
+    <div className={styles.bannercardwrapper} id="services">
         {bannercards.map((data,key)=>(
             <div className={styles.bannercard} key={key}>
             <img src={data.icon} alt={data.title} className={styles.bannercardlogo}/>

@@ -1,24 +1,34 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import {FaFacebook,FaTwitterSquare,FaWhatsappSquare,FaInstagramSquare,FaArrowCircleUp} from 'react-icons/fa'
-import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { useState,useEffect } from 'react';
 import styles from '../styles/Header.module.css'
 
 export default function Header() {
-    const router = useRouter();
-    const [burgerstate, setBurgerstate] = useState(true);
+    const [scrollstate, setScrollstate] = useState('');
+    const [burgerstate, setBurgerstate] = useState(false);
     const [visible, setVisible] = useState(false);
 
     const toggleVisible = () => {
       const scrolled = document.documentElement.scrollTop;
-      if (scrolled > 300){
+      if (scrolled > 500){
       setVisible(true)
       }
-      else if (scrolled <= 300){
+      else if (scrolled <= 500){
       setVisible(false)
       }
+      let about=(window.scrollY + document.querySelector('#about').getBoundingClientRect().top);
+      let services=(window.scrollY + document.querySelector('#services').getBoundingClientRect().top);
+      let portfolio=(window.scrollY + document.querySelector('#portfolio').getBoundingClientRect().top);
+      let testimonial=(window.scrollY + document.querySelector('#testimonial').getBoundingClientRect().top);
+      let contact=(window.scrollY + document.querySelector('#contact').getBoundingClientRect().top);
+      if(scrolled<services){setScrollstate('services')}
+      else if(scrolled>services && scrolled<about){setScrollstate('about')}
+      else if(scrolled>about && scrolled<portfolio){setScrollstate('portfolio')}
+      else if(scrolled>portfolio && scrolled<testimonial){setScrollstate('testimonial')}
+      else{setScrollstate('contact')}
+      
   };
 
   const scrollToTop = () =>{
@@ -28,8 +38,14 @@ export default function Header() {
       });
   };
 
+  const handleNav=(id)=>{
+    setScrollstate(id);
+    let y=(window.scrollY + document.querySelector('#'+id).getBoundingClientRect().top)-200;
+    window.scrollTo(0, y);
+  }
+
   useEffect(() => {
-      window.addEventListener("resize", ()=>{window.innerWidth>=600?setBurgerstate(true):""});
+      window.addEventListener("resize", ()=>{window.innerWidth>=600?setBurgerstate(false):setBurgerstate(true)});
       window.addEventListener('scroll', toggleVisible);
       
     },[]);
@@ -53,30 +69,27 @@ export default function Header() {
              </div>
          </div>
          <nav className={styles.headermain}>
-           <Link href="/"><a><img src='/applogo.png' className={styles.applogo} alt='dxtechlogo'/></a></Link>
+           <img src='/applogo.png' className={styles.applogo} alt='dxtechlogo'/>
 
-           <ul className={burgerstate?styles.navmenu:styles.navmenu +" " +styles.active}>
+           <ul className={!burgerstate?styles.navmenu:styles.navmenu +" " +styles.active}>
                 <li className={styles.navitem}>
-                   <Link href="/"><a onClick={() => setBurgerstate(!burgerstate)} className={router.pathname==='/'?navlink + " " +active:navlink}>Home</a></Link> 
+                   <a onClick={() => {handleNav('services');setBurgerstate(false);}} className={scrollstate==='services'?navlink + " " +active:navlink}>Services</a>
                 </li>
                 <li className={styles.navitem}>
-                    <Link href="/about"><a onClick={() => setBurgerstate(!burgerstate)} className={router.pathname==='/about'?navlink + " " +active:navlink}>About</a></Link> 
+                    <a onClick={() => {handleNav('about');setBurgerstate(false)}} className={scrollstate==='about'?navlink + " " +active:navlink}>About Us</a>
                 </li>
                 <li className={styles.navitem}>
-                    <Link href="/services"><a onClick={() => setBurgerstate(!burgerstate)} className={router.pathname==='/services'?navlink + " " +active:navlink}>Services</a></Link> 
+                    <a onClick={() => {handleNav('portfolio');setBurgerstate(false)}} className={scrollstate=='portfolio'?navlink + " " +active:navlink}>Portfolio</a>
                 </li>
                 <li className={styles.navitem}>
-                    <Link href="/portfolio"><a onClick={() => setBurgerstate(!burgerstate)} className={router.pathname=='/portfolio'?navlink + " " +active:navlink}>Portfolio</a></Link> 
+                    <a onClick={() => {handleNav('testimonial');setBurgerstate(false)}} className={scrollstate=='testimonial'?navlink + " " +active:navlink}>Testimonial</a>
                 </li>
                 <li className={styles.navitem}>
-                    <Link href="/blog"><a onClick={() => setBurgerstate(!burgerstate)} className={router.pathname=='/blog'?navlink + " " +active:navlink}>Blog</a></Link> 
-                </li>
-                <li className={styles.navitem}>
-                    <Link href="/contact"><a onClick={() => setBurgerstate(!burgerstate)} className={router.pathname=='/contact'?navlink + " " +active:navlink}>Contact</a></Link> 
+                    <a onClick={() => {handleNav('contact');setBurgerstate(false)}} className={scrollstate=='contact'?navlink + " " +active:navlink}>Contact</a>
                 </li>
 
             </ul>
-            <button className={burgerstate?styles.hamburger:styles.hamburger + " " +styles.active} onClick={() => setBurgerstate(!burgerstate)}>
+            <button className={!burgerstate?styles.hamburger:styles.hamburger + " " +styles.active} onClick={() => setBurgerstate(!burgerstate)}>
                 <span className={styles.bar}></span>
                 <span className={styles.bar}></span>
                 <span className={styles.bar}></span>

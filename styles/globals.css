@@ -6,6 +6,7 @@ body {
   background: #eaf9fe;
   position: relative;
   z-index: -1;
+  scroll-behavior: smooth;
 }
 
 
@@ -40,6 +41,9 @@ li {
   border-radius: 8px;
   margin-right: 20px;
   cursor: pointer;
+  color: white;
+  border: none;
+  font-weight: 550;
 }
 
 .btn_secondary{
@@ -48,15 +52,108 @@ li {
   border-radius: 8px;
   color:black;
   cursor: pointer;
+  border: none;
+  font-weight: 550;
 }
 
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.input-outlined {
+  position: relative;  
+  width: 80%;
+  margin: 30px;
+  max-width: 500px;
+}
+
+.input-outlined label {
+  position: absolute;
+  font-size: 1rem;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  color: gray;
+  padding: 0 0.3rem;
+  margin: 0 0.5rem;
+  transition: .2s ease-out;
+  transform-origin: left top;
+  pointer-events: none;
+}
+.input-outlined input {
+  font-size: 1rem;
+  outline: none;
+  border: 1px solid white;
+  border-radius: 5px;  
+  padding: 1rem 0.7rem;
+  position: relative;
+  transition: 0.1s ease-out;
+  width: 100%;
+  background: transparent;
+}
+
+.input-outlined input::placeholder {
+color: #eaf9fe;
+}
+.input-outlined input:focus {
+  border-color: white;  
+}
+.input-outlined input:focus + label {
+  color: white;  
+  top: 0;
+  left: -10px;
+  transform: translateY(-110%) scale(.9);
+}
+.input-outlined input:placeholder-shown + label {
+ display: none;
+}
+
+.input-outlined input:not(placeholder-shown) + label {
+  color: white;  
+  top: 0;
+  left: -10px;
+  transform: translateY(-110%) scale(.9);
+}
+
+.footerwrapper{
+  background: rgb(24,24,24);
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding-bottom: 0px;
+}
+
+.footersections{
+  width:calc(25% - 20px);
+  margin: 10px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.footersections a{
+  margin: 10px 0px;
+  font-weight: 300;
+}
+
+.footersections a:hover{
+  font-weight: 500;
+}
+
+.footersections h1,.footersections h2, .footersections h3,.footersections h4, .footersections h5{margin: 0;}
+.footersections p{line-height: 2rem;}
+
+.footericons i{
+  margin-left: 20px;
+}
+
+.footericons:first-child i{margin-left: 0px;}
+
+.footerbtmtext{
+  width: 100%;
+  text-align: center;
+  padding: 15px;
+  color: white;
+  font-weight: 300;
 }
