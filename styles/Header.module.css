@@ -137,8 +137,18 @@
   @media screen and (max-width: 1023px) {
   
   .scrollbtn{bottom:120px}
-  
-
+  .headercontact
+    {
+       flex-direction: column;
+       height: fit-content;
+       justify-content: center;
+       align-items: center;
+       
+      }
+    .contactleft{
+      text-align: center;
+      margin-bottom: 10px;
+    }
     /* Header & Footer */
     .header{ box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);border: none;}
     .navbar{

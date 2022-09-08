@@ -157,3 +157,12 @@ color: #eaf9fe;
   color: white;
   font-weight: 300;
 }
+
+@media screen and (max-width: 1023px) {
+  .footerwrapper{
+    flex-direction: column;
+  }
+  .footersections{
+    width: 100%;
+  }
+}

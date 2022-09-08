@@ -479,3 +479,41 @@ right: 0;
 background: rgb(24, 24, 24,0.5);
 z-index: -1;
 }
+
+@media screen and (max-width: 1129px) {
+
+  .bannercard{
+    width: calc(50% - 40px);
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .bannercard{
+    width: calc(100%);
+    margin-top: 20px;
+  }
+  .bannercardwrapper{
+    margin-bottom: 50px;
+  }
+
+  .companydescwrapper{
+    flex-direction: column;
+  }
+
+  .companyimg{width: 100%;margin-bottom: 20px;}
+  .comimg1{margin-top: 0px;}
+  .companydesc{width: 100%;}
+  .teamwrapper{flex-direction: column;align-items: center;}
+  .teamdesc{width: 100%;}
+  .teammember{width: 100%;margin: 0px;margin-bottom: 30px;max-width: 300px;}
+  .porfoliobox{flex-direction: column;}
+  .portfolio{width: 100%;margin: 0px;margin-bottom: 30px;}
+  .statback{flex-direction: column;height: fit-content;align-items: center;justify-content: baseline;}
+  .stats{width: 300px;justify-content: flex-start;}
+  .banner_text{width: 80%;}
+  .main_text{font-size: 2rem;}
+  .testimonialwrapper{flex-direction: column;}
+  .testimonialleft{width: 100%;}
+  .testimonialright{width: 100%;}
+}
