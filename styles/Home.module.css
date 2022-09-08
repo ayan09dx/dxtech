@@ -324,7 +324,7 @@ background: linear-gradient(45deg, rgba(2,0,36,1) 0%, rgba(73,134,252,1) 0%, rgb
   display: inline-flex;
   flex-direction: column;
   width: 300px;
-  height: 300px;
+  height: fit-content;
   position: relative;
   margin-top: 20px;
   margin-left: 20px;

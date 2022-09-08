@@ -1,26 +1,32 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import styles from '../styles/Home.module.css'
+import { companydesc } from './Data'
 
 export default function CompanyDesc() {
+  const handleNav=(id)=>{
+    let y=(window.scrollY + document.querySelector('#'+id).getBoundingClientRect().top)-200;
+    window.scrollTo(0, y);
+  }
+
   return (
     <div className={styles.companydescwrapper} id="about">
         <div className={styles.companyimg}>
             <div className={styles.companystat}>
              <img src="/exp.png" alt="exp-img" className={styles.expimg}/>
-             <h1>42</h1>
+             <h1>{companydesc.totalExp}</h1>
              <p>Years of Experience</p>
             </div>
             <img src="/comimg1.jpg" alt="company_img" className={styles.comimg1}/>
             <img src="/comimg2.jpg" alt="company_img" className={styles.comimg2}/>
         </div>
         <div className={styles.companydesc}>
-            <h3>Welcome to DX Teach</h3>
-            <h1>We Are Portech Creative Studio Agency</h1>
+            <h3>{companydesc.welcome}</h3>
+            <h1>{companydesc.herotext}</h1>
             <p>
-            Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.
+            {companydesc.herosubtext}
             </p>
-            <a href="#" className='btn_primary' style={{color:'white',width:200,textAlign:'center',marginTop:30}}>Get in Touch</a>
+            <button  onClick={()=>handleNav('contact')} className='btn_primary' style={{color:'white',width:200,textAlign:'center',marginTop:30}}>Get in Touch</button>
         </div>
     </div>
   )

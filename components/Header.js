@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react'
 import {FaFacebook,FaTwitterSquare,FaWhatsappSquare,FaInstagramSquare,FaArrowCircleUp} from 'react-icons/fa'
-import Link from 'next/link';
+import { headerdata } from './Data';
 import { useState,useEffect } from 'react';
 import styles from '../styles/Header.module.css'
 
@@ -59,7 +59,7 @@ export default function Header() {
       <header className={styles.header}>
          <div className={styles.headercontact} style={visible?{display:'none'}:{}}>
              <div className={styles.contactleft}>
-             Phone no: +00 1234 567 or email us: emailsample@email.com
+             {headerdata.contacttext}
              </div>
              <div className={styles.contactright}>
                 <a href="#" className={styles.soicalicons}><i><FaFacebook size={20}/></i></a>
@@ -72,22 +72,11 @@ export default function Header() {
            <img src='/applogo.png' className={styles.applogo} alt='dxtechlogo'/>
 
            <ul className={!burgerstate?styles.navmenu:styles.navmenu +" " +styles.active}>
-                <li className={styles.navitem}>
-                   <a onClick={() => {handleNav('services');setBurgerstate(false);}} className={scrollstate==='services'?navlink + " " +active:navlink}>Services</a>
-                </li>
-                <li className={styles.navitem}>
-                    <a onClick={() => {handleNav('about');setBurgerstate(false)}} className={scrollstate==='about'?navlink + " " +active:navlink}>About Us</a>
-                </li>
-                <li className={styles.navitem}>
-                    <a onClick={() => {handleNav('portfolio');setBurgerstate(false)}} className={scrollstate=='portfolio'?navlink + " " +active:navlink}>Portfolio</a>
-                </li>
-                <li className={styles.navitem}>
-                    <a onClick={() => {handleNav('testimonial');setBurgerstate(false)}} className={scrollstate=='testimonial'?navlink + " " +active:navlink}>Testimonial</a>
-                </li>
-                <li className={styles.navitem}>
-                    <a onClick={() => {handleNav('contact');setBurgerstate(false)}} className={scrollstate=='contact'?navlink + " " +active:navlink}>Contact</a>
-                </li>
-
+            {headerdata.tabs.map((data,key)=>(
+              <li className={styles.navitem} key={key}>
+              <a onClick={() => {handleNav(data.toLocaleLowerCase());setBurgerstate(false);}} className={scrollstate===data.toLocaleLowerCase()?navlink + " " +active:navlink}>{data}</a>
+              </li>
+            ))}
             </ul>
             <button className={!burgerstate?styles.hamburger:styles.hamburger + " " +styles.active} onClick={() => setBurgerstate(!burgerstate)}>
                 <span className={styles.bar}></span>

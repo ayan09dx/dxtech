@@ -2,6 +2,7 @@
 import {useEffect} from 'react'
 import styles from '../styles/Home.module.css'
 import {AiFillStar} from 'react-icons/ai'
+import { testimonial } from './Data'
 
 export default function Testimonial() {
 
@@ -43,48 +44,30 @@ export default function Testimonial() {
             <h1>What Our Clients Says</h1>
         </div>
         <div className={styles.testimonialright} id="testimonial">
-            <div className={styles.testimonial}>
+            {testimonial.map((data,key)=>(
+                <div className={styles.testimonial} key={key}>
                 <div style={{display:'flex'}}>
-                    <AiFillStar color='green' size={25}/>
-                    <AiFillStar color='green' size={25}/>
-                    <AiFillStar color='green' size={25}/>
-                    <AiFillStar color='green' size={25}/>
-                    <AiFillStar color='green' size={25}/>
+                    {data.stars.map((star,skey)=>(
+                      <AiFillStar color='green' size={25} key={skey}/>
+                    ))}
                 </div>
                 <p>
-                Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. 
+                {data.comment}
                 </p>
                 <div className={styles.cutomerwrap}>
-                    <img src="/emp1.jpeg" className={styles.customer} alt="customer"/>
+                    <img src={data.img} className={styles.customer} alt="customer"/>
                     <div>
-                        <h3>Roger Binny</h3>
-                        <h4>Marketing Head</h4>
+                        <h3>{data.name}</h3>
+                        <h4>{data.desig}</h4>
                     </div>
                     
                 </div>
 
             </div>
-            <div className={styles.testimonial}>
-                
-            </div>
-            <div className={styles.testimonial}>
-                
-            </div>
-            <div className={styles.testimonial}>
-                
-            </div>
-            <div className={styles.testimonial}>
-                
-            </div>
-            <div className={styles.testimonial}>
-                
-            </div>
-            <div className={styles.testimonial}>
-                
-            </div>
-            <div className={styles.testimonial}>
-                
-            </div>
+
+            ))
+            
+           }
         </div>
     </div>
   )

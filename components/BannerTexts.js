@@ -1,22 +1,29 @@
 import React from 'react'
 import styles from '../styles/Home.module.css'
+import { bannertext } from './Data'
 
 export default function BannerTexts() {
+
+  const handleNav=(id)=>{
+    let y=(window.scrollY + document.querySelector('#'+id).getBoundingClientRect().top)-200;
+    window.scrollTo(0, y);
+  }
+
   return (
     <div className={styles.banner_text}>
           <p className={styles.welcome_text}>
-            Welcome to DX Tech
+            {bannertext.welcome}
           </p>
           <p className={styles.main_text}>
-            We Create Website The Way You Want
+            {bannertext.herotext}
           </p>
           <p className={styles.banner_subtext}>
-          Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.
+            {bannertext.herosubtext}
           </p>
 
           <div className={styles.bannerbtnwrap}>
-            <a href="#" className='btn_primary'>Learn More</a>
-            <a href="#" className='btn_secondary'>View Portfolio</a>
+            <button onClick={()=>handleNav('about')}  className='btn_primary'>Learn More</button>
+            <button  onClick={()=>handleNav('portfolio')}  className='btn_secondary'>View Portfolio</button>
           </div>     
         </div>
   )
