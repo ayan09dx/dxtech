@@ -504,7 +504,7 @@ z-index: -1;
 
   .companyimg{width: 100%;margin-bottom: 20px;}
   .comimg1{margin-top: 0px;}
-  .companydesc{width: 100%;}
+  .companydesc{width: 100%;padding: 0;}
   .teamwrapper{flex-direction: column;align-items: center;}
   .teamdesc{width: 100%;}
   .teammember{width: 100%;margin: 0px;margin-bottom: 30px;max-width: 300px;}
