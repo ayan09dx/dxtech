@@ -512,7 +512,7 @@ z-index: -1;
   .portfolio{width: 100%;margin: 0px;margin-bottom: 30px;}
   .statback{flex-direction: column;height: fit-content;align-items: center;justify-content: baseline;}
   .stats{width: 300px;justify-content: flex-start;}
-  .banner_text{width: 80%;}
+  .banner_text{width: 80%;margin-left: 20px;}
   .main_text{font-size: 2rem;}
   .testimonialwrapper{flex-direction: column;}
   .testimonialleft{width: 100%;}
