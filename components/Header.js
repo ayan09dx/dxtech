@@ -45,14 +45,14 @@ export default function Header() {
   }
 
   useEffect(() => {
-      window.addEventListener("resize", ()=>{window.innerWidth>=600?setBurgerstate(false):setBurgerstate(true)});
+      window.addEventListener("resize", ()=>{window.innerWidth>=600?setBurgerstate(false):""});
       window.addEventListener('scroll', toggleVisible);
       
     },[]);
 
  let navlink=visible?styles.navlinkfixed:styles.navlink;
  let active=visible?styles.activefixed:styles.active;
-
+ 
   return (
     <>
     <div className={visible?styles.header_container_fixed:styles.header_container}>
